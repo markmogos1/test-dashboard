@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f3ee;
+  --surface: #ffffff;
+  --border: #111111;
+  --text-primary: #111111;
+  --text-secondary: #999999;
+  --accent: #f0c800;
+  --trend-up: #2d7a2d;
+  --trend-down: #c0392b;
+  --nudge: #e67e22;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+@keyframes todayDotPop {
+  0%   { opacity: 0; transform: scale(0); }
+  70%  { transform: scale(1.35); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.today-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: todayDotPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes todayPulse {
+  0%   { opacity: 0.55; transform: scale(1); }
+  100% { opacity: 0;    transform: scale(3); }
+}
+.today-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: todayPulse 2s ease-out infinite;
+}
+
+/* ── Mobile ────────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .tracker-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .topbar-email {
+    display: none !important;
+  }
+  .modal-scroll {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .main-pad {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
